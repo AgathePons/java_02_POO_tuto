@@ -17,7 +17,7 @@ public class Classes {
 		boolean isScary = true;
 		SpecialAbility ability;
 
-		// constructor
+		// constructor - isScary has a default value, so it is not mandatory in the constructor
 		public Monster(String name, int eyesNumber, SpecialAbility ability) {
 			this.name = name;
 			this.eyesNumber = eyesNumber;
