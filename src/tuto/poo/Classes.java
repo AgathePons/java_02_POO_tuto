@@ -13,11 +13,9 @@ public class Classes {
 		// legacy
 		SuperVilain theJoker = new SuperVilain(127, "The Joker", "Harley Quinn", 3, false);
 		theJoker.sayHello();
-		theJoker.sayDeclaration();
 		System.out.println("He killed " + theJoker.innocentPeopleKilledNumber + " innocent people...");
 		SuperNice batman = new SuperNice(76, "Batman", "Robin", 4, false);
 		batman.sayHello();
-		batman.sayDeclaration();
 		System.out.println("He saved " + batman.innocentPeopleSaveedNumber + " innocent people...");
 		System.out.println("Batman's sidekick is " + batman.sideKick + ".");
 		batman.sideKick = "Catwoman";
@@ -73,7 +71,9 @@ public class Classes {
 	static class SuperVilain extends SuperHero {
 		public int innocentPeopleKilledNumber;
 
-		void sayDeclaration() {
+		@Override
+		void sayHello() {
+			super.sayHello();
 			System.out.println("I will kill innocent people!");
 		}
 
@@ -88,7 +88,9 @@ public class Classes {
 	static class SuperNice extends SuperHero {
 		public int innocentPeopleSaveedNumber;
 
-		void sayDeclaration() {
+		@Override
+		void sayHello() {
+			super.sayHello();
 			System.out.println("I will save the world from bad guys!");
 		}
 

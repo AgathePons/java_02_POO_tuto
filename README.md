@@ -119,5 +119,71 @@ public class Carre extends FigureGeometrique {
 
 ## Polymorphism
 
+It is possible to **override** or **overwrite** a class method inherited from a parent class.
+The method name is the same, and it is inherited from the same parent class, but according to the child class 
+that extends the parent class, the method can have different behaviors.
+
+```java
+static class SuperHero {
+    private final String name;
+    void sayHello() {
+        System.out.println("Hello, my name is " + name + " and I am a superhero!");
+    }
+    // constructor
+    SuperHero(String name) {
+        this.name = name;
+    }
+}
+```
+
+Here, the method `sayHello()` prints "Hello, my name is [name of the hero] and I am a superhero!".
+
+```java
+static class SuperVilain extends SuperHero {
+    @Override
+    void sayHello() {
+        super.sayHello();
+        System.out.println("I will kill innocent people!");
+    }
+    // constructor    
+    SuperVilain(String name) {
+        super(name, sideKick, alliesNumber, hasSuperPower);
+    }
+}
+
+static class SuperNice extends SuperHero {
+    @Override
+    void sayHello() {
+        super.sayHello();
+        System.out.println("I will save innocent people!");
+    }
+    // constructor    
+    SuperNice(String name) {
+        super(name, sideKick, alliesNumber, hasSuperPower);
+    }
+}
+```
+
+Both `SuperVilain` and `SuperNice` have access to the `sayHello()` method, but it has different behaviors 
+according to the child class calling it.
+
+The notation `@override` is here to inform that this method is inherited, and overriden.
+
+It is possible to access the parent original method with the keyword `super`. In the example above, we use 
+`super.sayHello();` to access the original method, and a new instruction is added to overload the method.
+
+**/!\** In multiple legacies case, it is only possible to access the direct parent class implementation. If we 
+ create a sub-class `SuperNiceWithSuperPower` that extends `SuperNice`, `super` allows to access the
+ `SuperNice` implementation but not the `SuperHero` implementation.
+ 
+## Annotation type
+
+ Annotation is a special type beginning by `@` that is used to specify the behavior of of a class, method, 
+ attribute, variable... Annotations give informations to the compiler for the execution of the program's code.
+ 
+ In Java, the most used annotation is `@Override` in complement of the **polymorphism** to point that the 
+method is a redefinition of a method from the parent class. If the annotation is on a method, the compiler
+will check if the method signature is identical to the method signature of the parent class.
+
 
 ---------------------------
