@@ -195,5 +195,52 @@ String[] arrayOfStrings;
 arrayOfStrings = new String[3];
 ```
 
+The arrays are declared, but they have no values, by default, the strings array contains `null` elements, and 
+the integers array contains `0` elements.
+
+To access an element of the array, we use the index value:
+
+```java
+arrayOfStrings[0] = "first element (index 0)";
+System.out.println(arrayOfStrings[0]);
+```
+
+It is possible to create an array with values, and an array can be declared with the bracket pair on the name
+of the variable:
+
+```java
+String weekDays[] = new String[]{"monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"};
+System.out.println(Arrays.toString(weekDays));
+```
+
+And with a shorter syntax:
+
+```java
+int[] anArray = { 00, 10, 20, 30, 40, 50, };
+```
+
+In Java, **arrays length is fixed**, and only the existing values can be changed.  
+**It is not possible to insert or remove elements**.
+
+### Multidimensional array
+
+It is possible to declare bi-dimensional array:
+
+```java
+String[][] myBidimensionalArray = new String[4][2];
+// or
+String[][] levelsArray = {
+    { "Level 1", "Level 2", "Level 3", "level 4", "level 5" },
+    { "Easy", "Medium", "Hard" },
+};
+for (String[] array : levelsArray) {
+    System.out.println(Arrays.toString(array));
+}
+```
+
+It is like an array of array in JS.
+
+**Tips:** There are many ways to print 2D arrays (make a loop in a loop, use `Arrays.toString()` in a loop...) 
+but it is possible to use the `Arrays.deepToString()` method (sorted in one line).
 
 ---------------------------
