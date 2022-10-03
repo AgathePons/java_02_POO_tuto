@@ -185,5 +185,15 @@ It is possible to access the parent original method with the keyword `super`. In
 method is a redefinition of a method from the parent class. If the annotation is on a method, the compiler
 will check if the method signature is identical to the method signature of the parent class.
 
+## Array
+
+To declare an array:
+
+```java
+int[] arrayOfNumbers = new int[5];
+String[] arrayOfStrings;
+arrayOfStrings = new String[3];
+```
+
 
 ---------------------------
