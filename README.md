@@ -399,5 +399,55 @@ ingredients.add("pepper");
 ingredients.remove("salt");
 ```
 
+## Map
+
+A **map** is an Java object that maps **keys** to **value**. Keys are unique, and each key can map one value.
+
+Like lists and sets, Java provides many classes for maps. The most used is `HashMap`.
+
+To declare a map, we must specify the **key type** followed by the **value type** when we declare the variable
+and when we create the new class instance:
+
+```java
+Map<String, Integer> myInventoryMap = new HashMap<String, Integer>();
+```
+
+We can use `put(key, value)` to insert or modify an entry in a map, `remove(key)` to remove an entry by its
+key, and `get(key)` to get the value of an entry by its key.
+
+For example:
+
+```java
+myInventoryMap.put("health potion", 6); // add entry
+myInventoryMap.put("mana potion", 4); // add entry
+myInventoryMap.put("boar leather", 32); // add entry
+myInventoryMap.remove("mana potion", 4); // remove entry
+myInventoryMap.put("boar leather", 75); // modify entry
+System.out.println("in my inventory, I have " + myInventoryMap.get("mana potion") + " mana potions");
+```
+
+To avoid mistakes or mispelling a key, a trick is to constant variables as keys:
+
+```java
+Map<String, String> batmanMap = new HashMap<String, String>();
+
+final String K_NAME = "name";
+final String K_HERO_NAME = "hero name";
+final String K_SIDEKICK = "side-kick";
+
+batmanMap.put(K_NAME, "Bruce Wayne");
+batmanMap.put(K_HERO_NAME, "Batman");
+batmanMap.put(K_SIDEKICK, "Robin");
+```
+
+To loop on a map, we do not have index, but we can loop on entries:
+
+```java
+for (Map.Entry<String, Integer> item : myInventoryMap.entrySet()) {
+    System.out.println(item.getKey() + ": " + item.getValue());
+}
+```
+
+See the complete doc for [Java map](https://docs.oracle.com/javase/tutorial/collections/interfaces/map.html).
 
 ---------------------------

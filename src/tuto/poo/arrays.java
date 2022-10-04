@@ -2,8 +2,10 @@ package tuto.poo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class arrays {
@@ -69,8 +71,36 @@ public class arrays {
 		for (String ingredient : ingredients) {
 			System.out.println(ingredient);
 		}
-
 		System.out.println("pepper is in the set: " + ingredients.contains("pepper"));
+
+		System.out.println("//------ MAPS -----------------------------------//");
+		// maps
+		Map<String, Integer> myInventoryMap = new HashMap<String, Integer>();
+		myInventoryMap.put("health potion", 6);
+		myInventoryMap.put("mana potion", 4);
+		myInventoryMap.put("boar leather", 32);
+		myInventoryMap.put("rabbit leather", 61);
+		myInventoryMap.put("rusty ring", 2);
+
+		System.out.println("in my inventory, I have " + myInventoryMap.get("mana potion") + " mana potions");
+		System.out.println("I have " + myInventoryMap.size() + " different things");
+
+		myInventoryMap.put("rabbit leather", 62);
+		myInventoryMap.remove("mana potion");
+
+		for (Map.Entry<String, Integer> item : myInventoryMap.entrySet()) {
+			System.out.println(item.getKey() + ": " + item.getValue());
+		}
+
+		Map<String, String> batmanMap = new HashMap<String, String>();
+
+		final String K_NAME = "name";
+		final String K_HERO_NAME = "hero name";
+		final String K_SIDEKICK = "side-kick";
+
+		batmanMap.put(K_NAME, "Bruce Wayne");
+		batmanMap.put(K_HERO_NAME, "Batman");
+		batmanMap.put(K_SIDEKICK, "Robin");
 
 		System.out.println("//------------------------------------------------//");
 
