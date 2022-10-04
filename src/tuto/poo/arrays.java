@@ -2,7 +2,9 @@ package tuto.poo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class arrays {
 
@@ -42,11 +44,33 @@ public class arrays {
 		// lists
 		List<String> myList = new ArrayList<String>();
 		myList.add("test");
+		myList.add("Bloubliblou");
+		myList.add("Youpi Tralala");
+		myList.add("test2");
+		myList.add(0, "test3");
+		myList.remove(1);
+
+		System.out.println(myList.toString());
 		System.out.println(myList.getClass().getName());
 		System.out.println(myList.get(0).getClass().getName());
+		System.out.println("test is in the set: " + myList.contains("test"));
 
-		boolean number = true;
-		System.out.println(((Object) number).getClass().getSimpleName());
+		System.out.println("//------ SETS -----------------------------------//");
+		// sets
+		Set<String> ingredients = new HashSet<String>();
+		ingredients.add("salt");
+		ingredients.add("pepper");
+		ingredients.add("tomato");
+		ingredients.add("chicken");
+		System.out.println(ingredients.toString());
+		ingredients.remove("salt");
+		System.out.println(ingredients.toString());
+
+		for (String ingredient : ingredients) {
+			System.out.println(ingredient);
+		}
+
+		System.out.println("pepper is in the set: " + ingredients.contains("pepper"));
 
 		System.out.println("//------------------------------------------------//");
 

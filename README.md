@@ -369,9 +369,35 @@ The most used methods of `ArrayList` are:
 - `.set()`: Replace an element at the given index (`.set(2, "my other element"`).
 - `.remove()`: Remove an element at the given index, moving all the following at the index - 1 position.
 - `.size()`: Returns the size of the list (like `.length` for arrays).
+- `.get()`: Returns the element at the given index.
+
+To print out a list (or a set), we can use the `toString()` method on it.
 
 ## Non ordered collection - Set
 
+A set is a non ordered collection of unique elements.
+
+Like lists, Java provides many classes for sets. The most used is `HashSet`.
+
+```java
+Set<String> ingredients = new HashSet<String>();
+```
+
+We declare the variable with the **interface** `Set`, then we initialize a new instance with the **class**
+`HashSet`.
+
+Because a set is not ordered, there is no simple way to access a specific element.  
+See the [Java doc for Set](https://docs.oracle.com/javase/tutorial/collections/interfaces/set.html) for more
+infos.
+
+We can use the methods `.add()`, `.remove()`, `.size()` of `HashSet`. Unlike `ArrayList`, we cannot give an
+index to the `remove()`method, we have to specify the unique value we want to remove:
+
+```java
+ingredients.add("salt");
+ingredients.add("pepper");
+ingredients.remove("salt");
+```
 
 
 ---------------------------
