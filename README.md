@@ -249,7 +249,8 @@ will check if the method signature is identical to the method signature of the p
 ## Array
 
 An **array** is a **container object** that holds a **fixed number of values** of a **single type**.  
-The length of an array is established when the array is created. After creation, its length is fixed.
+The length of an array is established when the array is created. After creation, its length is fixed.  
+Arrays in Java are not used a lot, we prefere `ArrayList`.
 To declare an array:
 
 ```java
@@ -307,9 +308,9 @@ It is like an array of array in JS.
 but it is possible to use the `Arrays.deepToString()` method (sorted in one line).
 
 **/!\ Attention**, to be able tu use the `Arrays` methods from the class Arrays, we must import the class
-using `import java.util.Arrays;` (Eclipse handles it automatically when saving).
+using `import java.util.Arrays;` (Eclipse can handle it automatically when saving).
 
-### Ordered list
+## Ordered collection - List
 
 Ordered lists are editable, their content and number of elements can be changed.
 
@@ -326,5 +327,51 @@ There are many classes which use lists, but the most used is `ArrayList`. To be 
 the interface `List`.
 
 **/!\ Attention**, like `Arrays`, `List` and `ArrayList` must be imported.
+
+To declare an `ArrayList`:
+
+- Declare a variable whose the type is the interface `List`. That means we can assign any object to this
+variable, including the class `ArrayList`.
+- Initialize the cariable with the key word `new` to create a new instance of the `ArrayList` class.
+
+```java
+List<String> myStringsList = new ArrayList<String>();
+List<Integer> myIntegersList = newArrayList<Integer>();
+```
+
+The first element between chevrons is the **type parameter** for the list, which limits the object type that 
+can be stocked in the list.  
+If no type paramter is specified, we can stock any object, but when we want to get an element of the list, we
+will have to make a type conversion (a **cast**) to use it. It is higly recommended to specify the
+**type parameter**.
+
+Because a list can stock only objects, even if we want to stock a primitive type like integer, we must use the
+**object version** of the primitive types (`Integer`, `Float`, `Boolean`...).  
+(these object versions are very useful because they have many methods, see the doc, for example the doc for
+[Integer](https://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html))
+
+Then, we can add values using the `.add()` method.
+
+```java
+myIntegersList.add(5);
+```
+
+This assignment create a instance of the `Integer` class and push it in the list.
+
+> The **boxing** in Java is an auto-conversion between a primitive type and its corresponding class when an
+object is required, like it is with the `ArrayList`.  
+Read more on **[autoboxing](https://docs.oracle.com/javase/tutorial/java/data/autoboxing.html)**.
+
+The most used methods of `ArrayList` are:
+
+- `.add()`: Add a new element at the end of the list, or insert a new element at the given index
+(`.add(2, "my element")`) moving the current element and the following at the index + 1 position.
+- `.set()`: Replace an element at the given index (`.set(2, "my other element"`).
+- `.remove()`: Remove an element at the given index, moving all the following at the index - 1 position.
+- `.size()`: Returns the size of the list (like `.length` for arrays).
+
+## Non ordered collection - Set
+
+
 
 ---------------------------
