@@ -1,5 +1,66 @@
 # POO with Java
 
+## /!\ Tips before all
+
+Because Java is very wordy and variables' types cannot be changed, with an IDE, it is very simple to get the
+type of a variable.
+But in any event, here are some ways to find variables types.
+
+To find the **primitive type** of a variable:
+
+```java
+int myNumber = 2;
+System.out.println(((Object) myNumber).getClass().getName());
+// -> java.lang.Integer
+boolean myBool = true;
+System.out.println(((Object) myBool).getClass().getSimpleName());
+// -> Boolean
+```
+
+The idea is to cast the primitive type into an `Object` type, so we can access the `.getClass()` and
+`getName()` methods. 
+
+To find the **complex type** of a variable:
+
+```java
+List<String> myList = new ArrayList<String>();
+myList.add("test");
+System.out.println(myList.getClass().getName());
+// -> java.util.ArrayList
+System.out.println(myList.get(0).getClass().getName());
+// -> java.lang.String
+```
+
+The special case for **arrays**.  
+Because arrays are special, the `.getClass().getName()` behavior is different.  
+It will return `[` for 1D array, `[[` for a 2D array and so on. Followed by a letter which is a code
+representing the type.
+
+```java
+boolean             Z
+byte                B
+char                C
+class or interface  Lclassname;
+double              D
+float               F
+int                 I
+long                J
+short               S
+```
+
+For example:
+
+```java
+int[] anArray = { 00, 10, 20, 30, 40, 50, };
+System.out.println(anArray.getClass().getName());
+// -> class [I
+String weekDays[] = new String[] { "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday" };
+System.out.println("weekDays is type:" + weekDays.getClass().getName());
+// -> [Ljava.lang.String;
+```
+ 
+
+
 ## Java classes
 
 Classes are **complex type** in Java.
@@ -187,6 +248,8 @@ will check if the method signature is identical to the method signature of the p
 
 ## Array
 
+An **array** is a **container object** that holds a **fixed number of values** of a **single type**.  
+The length of an array is established when the array is created. After creation, its length is fixed.
 To declare an array:
 
 ```java
@@ -242,5 +305,26 @@ It is like an array of array in JS.
 
 **Tips:** There are many ways to print 2D arrays (make a loop in a loop, use `Arrays.toString()` in a loop...) 
 but it is possible to use the `Arrays.deepToString()` method (sorted in one line).
+
+**/!\ Attention**, to be able tu use the `Arrays` methods from the class Arrays, we must import the class
+using `import java.util.Arrays;` (Eclipse handles it automatically when saving).
+
+### Ordered list
+
+Ordered lists are editable, their content and number of elements can be changed.
+
+It is possible to:
+
+- Access an element by its index
+- Add an element at the end of the list
+- Add an element to a specific index
+- Delete an element at a specific index
+
+**/!\ Attention**, It is possible to change / add / remove values, but not the type!
+
+There are many classes which use lists, but the most used is `ArrayList`. To be able to use it, we have to use
+the interface `List`.
+
+**/!\ Attention**, like `Arrays`, `List` and `ArrayList` must be imported.
 
 ---------------------------
