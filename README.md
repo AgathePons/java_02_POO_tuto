@@ -59,7 +59,7 @@ System.out.println("weekDays is type:" + weekDays.getClass().getName());
 // -> [Ljava.lang.String;
 ```
  
-
+----------------------------------------------
 
 ## Java classes
 
@@ -245,6 +245,8 @@ It is possible to access the parent original method with the keyword `super`. In
  In Java, the most used annotation is `@Override` in complement of the **polymorphism** to point that the 
 method is a redefinition of a method from the parent class. If the annotation is on a method, the compiler
 will check if the method signature is identical to the method signature of the parent class.
+
+----------------------------------------------
 
 ## Array
 
@@ -450,4 +452,37 @@ for (Map.Entry<String, Integer> item : myInventoryMap.entrySet()) {
 
 See the complete doc for [Java map](https://docs.oracle.com/javase/tutorial/collections/interfaces/map.html).
 
----------------------------
+----------------------------------------------
+
+## Parameters of a function
+
+When a function / method is declared, it is possible to define **parameters**. The type of each paramter must
+be specified:
+
+```java
+public static void inMyPocket(String element, int number) {
+    System.out.println("In my pocker, I have " + number + " " + element);
+}
+```
+
+Then, when we call the method, we give it **arguments**:
+
+```java
+inMyPocket("chewing-gum", 2);
+inMyPocket("broken necklace", 1);
+```
+
+## Function return
+
+If we want our function returns something, we have to define the type of return, instead of `void`.
+
+```java
+public static int sumOfTwoIntegers(int numberA, int numberB) {
+    int result = numberA + numberB;
+    return result;
+}
+```
+
+In the example above, we defined the return as an integer.
+
+----------------------------------------------
