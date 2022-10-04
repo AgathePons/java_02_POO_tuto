@@ -485,4 +485,86 @@ public static int sumOfTwoIntegers(int numberA, int numberB) {
 
 In the example above, we defined the return as an integer.
 
+## Value type or reference type
+
+The different variable types (`integer`, `String`, `class`...) are categorized by **value** type or
+**reference** type.
+
+### Value type
+
+For a value type, if we declare a variable `myValue` with an other variable `myFirstValue` as value, the value
+of `myFirstValue` is duplicated and stored as value of `myValue`. Then if we modify the value of
+`myFirstValue`, because the 2 values are independent, `myValue` is not modified.
+
+```java
+int myFirstValue = 2; // -> 2
+int myValue = myFirstValue; // -> 2
+
+myFirstValue = 5; // -> 5
+
+System.out.println(myValue); // -> 2
+```
+
+### Reference type : pointers
+
+When we create a variable and assign it a class instance as value, the object is created, but the variable
+itself contains a **reference to this object** (the memory space where it is stocked). Then, if we created a
+new variable which takes our first variable as value, our 2 variables contain a
+**reference to the same object**.
+
+```java
+class Animal {
+    String name = "cat";
+}
+
+Animal myFirstAnimal = new Animal(); // -> cat (point to this instance of Animal)
+Animal mySecondAnimal = myFirstAnimal; // -> cat (point to the same instance of Animal)
+```
+
+So now, if we modifiy the value of the name of one variable, it will affect the other variable:
+
+```java
+mySecondAnimal.name = "dog"; // -> the instance is modified
+System.out.println(myFirstAnimal.name); // -> dog, because it points on the same instance than mySecondAnimal
+```
+
+If we want our 2 variables each point to their own value, we have to create a new instance of our Animal class
+for our second variable:
+
+```java
+Animal myFirstAnimal = new Animal(); // -> cat (point to this instance of Animal)
+Animal mySecondAnimal = new Animal(); // -> cat (point to this instance of Animal)
+```
+
+Reference type (or pointer type) can save memory, but it can have dangerous side effects if it is not handled
+properly.
+
+### WARNING: side effects!!!
+
+**We must be carreful if we pass reference type as function parameters** because all the modifications made will
+have side effects on the original instance of object.
+
+When calling a method, the given arguments are always value type. For primitive types, it is the value of the
+argument which is reproduced in the methode paramter.  
+So the modifications on the method paramter have no side effect on the argument.
+
+```java
+int sizeElementA = 5;
+int sizeElementB = enlargeElement(sizeOfElement);
+// this method add 2 to the integer given in argument
+```
+
+Because we work with `int`, this is value type, so there is no side effect on sizeElementA.
+
+Now, if we do the same with `Integer` instead of `int`:
+
+```java
+Integer sizeElementA = 5;
+Integer sizeElementB = enlargeElement(sizeOfElement);
+// this method add 2 to the integer given in argument
+```
+
+Because we work with `Integer`, this is a reference type, 
+
+
 ----------------------------------------------
