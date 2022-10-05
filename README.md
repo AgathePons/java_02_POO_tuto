@@ -556,6 +556,8 @@ int sizeElementB = enlargeElement(sizeOfElement);
 
 Because we work with `int`, this is value type, so there is no side effect on sizeElementA.
 
+**WARNING**: Rework this last section because the tests hav not worked as expected...
+
 Now, if we do the same with `Integer` instead of `int`:
 
 ```java

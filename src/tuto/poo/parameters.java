@@ -64,8 +64,27 @@ public class parameters {
 
 		Integer sizeC = 3;
 		Integer sizeD = enlargeElementInteger(sizeC);
-		Integer sizeE = enlargeElementInteger(sizeC);
+		Integer sizeE = enlargeElementInteger(sizeC) + 10;
 		System.out.println("sizeC: " + sizeC + " - sizeD: " + sizeD + " - sizeE: " + sizeE);
+
+		class SizeInteger {
+			Integer value = 3;
+		}
+		SizeInteger sizeF = new SizeInteger();
+		SizeInteger sizeG = new SizeInteger();
+
+		sizeF.value = 5;
+		sizeG.value = 10;
+		SizeInteger sizeH = new SizeInteger();
+
+		System.out.println("sizeF: " + sizeF.value);
+		System.out.println("sizeG: " + sizeG.value);
+		System.out.println("sizeH: " + sizeH.value);
+
+		SizeIntegerClass element = new SizeIntegerClass();
+		int sizeI = element.value;
+		int sizeJ = enlargeElementIntObj(element);
+		System.out.println("sizeI: " + sizeI + " - sizeJ: " + sizeJ);
 
 	}
 
@@ -116,13 +135,22 @@ public class parameters {
 
 	// last example
 	public static int enlargeElementInt(int size) {
-		size = size + 2;
+		size += 2;
 		return size;
 	}
 
 	public static Integer enlargeElementInteger(Integer size) {
-		size += 2;
+		size += new Integer(2);
 		return size;
+	}
+
+	public static class SizeIntegerClass {
+		int value = 3;
+	}
+
+	public static int enlargeElementIntObj(SizeIntegerClass obj) {
+		obj.value += 2;
+		return obj.value;
 	}
 
 }
