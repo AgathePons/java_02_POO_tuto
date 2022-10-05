@@ -541,12 +541,12 @@ properly.
 
 ### WARNING: side effects!!!
 
-**We must be carreful if we pass reference type as function parameters** because all the modifications made will
+**We must be carreful if we pass reference type as function parameters** because all the modifications made can
 have side effects on the original instance of object.
 
-When calling a method, the given arguments are always value type. For primitive types, it is the value of the
+When calling a method with arguments, if thery are primitive types, it is the value of the
 argument which is reproduced in the methode paramter.  
-So the modifications on the method paramter have no side effect on the argument.
+So the modifications on the method parameter have no side effect on the argument.
 
 ```java
 int sizeElementA = 5;
@@ -556,17 +556,72 @@ int sizeElementB = enlargeElement(sizeOfElement);
 
 Because we work with `int`, this is value type, so there is no side effect on sizeElementA.
 
-**WARNING**: Rework this last section because the tests hav not worked as expected...
+**But**, if we use complexe type like `ArrayList` as argument, we can produce very dangerous side effects:
 
-Now, if we do the same with `Integer` instead of `int`:
+Here is a method that take a list of integer as argument, add an element with the value `4` into it and return
+the list given in argument :
+
+```java
+static List<Integer> addFour(List<Integer> original) {
+    original.add(4);
+    return original;
+}
+```
+
+Now, we create a first list `suite` with `1`, `2` and `3` into it.  
+Then, we create a second list `otherSuite` whose the value is the returned list of `addFour(suite)`.
+
+```java
+List<Integer> suite = new ArrayList<>(Arrays.asList(1, 2, 3));
+System.out.println("suite:" + suite.toString()); // -> [1, 2, 3]
+List<Integer> otherSuite = addFour(suite);
+System.out.println("otherSuite:" + otherSuite.toString()); // -> [1, 2, 3, 4]
+System.out.println("suite:" + suite.toString()); // -> [1, 2, 3, 4]
+```
+
+As expected, `otherSuite` contains `1`, `2`, `3` and `4`, but `suite` contains exactly the same!  
+Using `suite` as argument when executing `addFour()` created a side effect of our varibale `suite`.
+
+In Java, we usually avoid to return the parameter (apart from specific cases). Because the parameter will be
+affected by the method, we prefer write:
+
+```java
+List<Integer> suite = new ArrayList<>(Arrays.asList(1, 2, 3));
+addFour(suite); // return void
+print(suite);
+```
+
+That way, it is more obvious that we are modifying `suite`.
+
+**WARNING**: Special case of **boxed types** : **immutability**
+
+Some classes are special, they are **immutable**.  
+String, and boxed primitive types (Integer, Double, Boolean...) are **immutable**. That means once created,
+than its body cannot be changed.
+
+If we take back the previous example with the `enlargeElement` method, but using `Integer` instead of `int`:
+
+We have the method:
+
+```java
+static Integer enlargeElementInteger(Integer size) {
+    size += 2;
+    return size;
+}
+```
+
+And we do:
 
 ```java
 Integer sizeElementA = 5;
-Integer sizeElementB = enlargeElement(sizeOfElement);
-// this method add 2 to the integer given in argument
+Integer sizeElementB = enlargeElement(sizeElementA);
 ```
 
-Because we work with `Integer`, this is a reference type, 
+Because we use the `Integer` class, we could expect a side effect on the value of `sizeElementA` but there is
+no side effect, `sizeElementA` is still `5`.
 
+Each time we use an assignment operator (like `=` or `+=`) on an immutable object a new instance is
+automatically created.  
+Here, the compiler translate `size += 2` in `size = new Integer(size) + 2`. 
 
 ----------------------------------------------
